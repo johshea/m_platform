@@ -5,7 +5,6 @@ import csv
 with open("csample.csv")as csvfile:
     csample = csv.reader(csvfile, delimiter=',')
 
-
 # get the rows of the CSV file and show them
     for row in csample:
         print("{device} is in {location} and has IP {ip}.".format(
