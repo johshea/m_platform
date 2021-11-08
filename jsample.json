@@ -1,0 +1,22 @@
+[
+    {
+        "name": "My AP",
+        "lat": 37.4180951010362,
+        "lng": -122.098531723022,
+        "serial": "Q234-ABCD-5678",
+        "mac": "00:11:22:33:44:55",
+        "model": "MR34",
+        "address": "1600 Pennsylvania Ave",
+        "notes": "My AP's note",
+        "lanIp": "1.2.3.4",
+        "tags": " recently-added ",
+        "networkId": "N_24329156",
+        "beaconIdParams": {
+            "uuid": "00000000-0000-0000-0000-000000000000",
+            "major": 5,
+            "minor": 3
+        },
+        "firmware": "wireless-25-14",
+        "floorPlanId": "g_1234567"
+    }
+]

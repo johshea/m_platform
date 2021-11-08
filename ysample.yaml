@@ -1,0 +1,14 @@
+---
+  device-1:
+    network_name: meraki-2021
+    template_name: RemoteBranch
+    device_name: mx-10
+    device_type: MX68
+    serial_no: ####-####-####
+    vlan_id: 1
+    ip_address: 10.168.1.1
+    subnet_mask: 255.255.255.0
+    gateway_ip: n/a
+    dns_server1: 208.67.222.222
+    dns_server2: 208.67.220.220
+
