@@ -18,8 +18,9 @@ import time
 
 
 
-def main(argv):
 
+def main(argv):
+    #function for resolving orgname to org ID
     def get_org(arg_orgname):
         org_response = dashboard.organizations.getOrganizations()
         for org in org_response:
@@ -30,7 +31,7 @@ def main(argv):
                 return(orgid)
 
             else:
-                print("No Org found")
+                print("No Org Found!")
                 sys.exit(0)
 
     def get_networks(orgid):
@@ -61,7 +62,7 @@ def main(argv):
         return ('success')
 
 
-
+    #Collect User Input
     arg_apikey = input("Please enter your Meraki API Key: ")
     if arg_apikey != '':
         API_KEY = arg_apikey
@@ -73,13 +74,15 @@ def main(argv):
         orgid = get_org(arg_orgname)
         networks = get_networks(orgid)
 
-    print("**Report Options**")
-    print("client_data")
+    print('**Report Options**')
+    print('client_data')
     print('firmware')
+    print('top_appliances (by Utilization 24 Hours)')
     print('all')
     arg_report = input("Please select a report from the options (default all): ")
     if arg_report == '':
         arg_report = 'all'
+
     print("**Format**")
     print("json")
     print("csv")
@@ -120,7 +123,7 @@ def main(argv):
 
                         client_data.append(client_data_df)
 
-                        # Set Variables and send to the CSV report function
+                        # Set Variables and send to the output function
                         data = client_data
                         flag = 'client_data'
                         filename = networks[i]['name'] + '_clients-' + str(timenow) + '.' + arg_filetype
@@ -187,19 +190,42 @@ def main(argv):
                 except Exception as e:
                     print(e)
 
-        if arg_report.lower() == 'all':
-            time.sleep(10) #pause for writes to complete
+    if arg_report.lower() == 'all':
+        time.sleep(10) #pause for writes to complete
+
+    #### begin Applicances by Utilization
+    if arg_report.lower() == 'top_appliances' or arg_report.lower() == 'all':
+        #Build Utilization Report
+        print("***Creating Appliance Utilization Reports***")
+
+        try:
+            ###################################
+            #insert correct API Call
+            appl_util_data =
+            ###################################
+
+            ###################################
+            #Set Variables for function
+            #look at output functions to validate variable values
+             = appl_util_data
+             = 'appl_util'
+             = f'{arg_orgname}_ApplianceUtilization' + str(timenow) + '.' + arg_filetype
+             = None
+            ###################################
+
+            ###################################
+            #Add an if / Else to determine the file format
+            arg_filetype == 'csv' and len(appl_util_data) > 0:
+                output = output_csv(data, flag, filename, netname)
+            arg_filetype == 'json':
+                output = output_json(data, flag, filename, netname)
+            ####################################
+
+        except Exception as e:
+            print(e)
 
     print("All Done. Have a nice day!")
 
-    #### Start Change Report here ####
-    #if
-        #for
-
-            #try
-
-            #except Exception as e:
-                #print(e)
 
 
 if __name__ == '__main__':
