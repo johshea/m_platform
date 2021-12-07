@@ -7,7 +7,6 @@
 #
 #Requirments:
 #Python3 and the requests and pathlib libraries
-#pip3 install pathlib
 #pip3 install requests
 #
 #Usage:
